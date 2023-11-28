@@ -8,10 +8,13 @@ De fato é bem simples o projeto, mas seu diferencial se encontra no tamanho da 
 Se desejar contribuir para a performance deste pequeno projeto, sinta-se avontade para abrir issues e sugerir PRs. <br>
 Conto com sua participação :D
 
+*Obs.: Sinta-se também avontade para usar este código pronto em seus projetos e demais Registries que existam por aí.
+
 ### Dados da imagem:
  ```bash
 REPOSITORY                 TAG           IMAGE ID       CREATED          SIZE
-rodrigomarq/my-golang-app  latest        fa72b8aac68e   51 seconds ago   9.14MB
+no-multi-stage-image-build latest        f35bd5f952d0   12 minutes ago   842MB   
+rodrigomarq/my-golang-app  latest        fa72b8aac68e   51 seconds ago   9.14MB  <-- (economia de mais de 800MB)
  ```
 
 ## Como usar
