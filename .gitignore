@@ -1,0 +1,20 @@
+# Go build and binary files
+*.exe
+*.dll
+*.exe~
+*.dll~
+/bin/
+/pkg/
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore log files
+*.log
+
+# Ignore configuration files
+config.yml
+
+# Ignore env
+*.env
