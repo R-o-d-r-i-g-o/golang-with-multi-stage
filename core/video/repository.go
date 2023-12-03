@@ -1,16 +1,25 @@
 package video
 
-import "gorm.io/gorm"
+import (
+	"go.mongodb.org/mongo-driver/mongo"
+	"gorm.io/gorm"
+)
 
 type IVideoRepository interface {
+	CreateVideo()
+	GetVideoInfo()
 }
 
 type videoRepository struct {
-	db *gorm.DB
+	mysql *gorm.DB
+	mongo *mongo.Client
 }
 
-func NewRepository(_db *gorm.DB) IVideoRepository {
-	return &videoRepository{db: _db}
+func NewRepository(_mysql *gorm.DB, _mongo *mongo.Client) IVideoRepository {
+	return &videoRepository{
+		mysql: _mysql,
+		mongo: _mongo,
+	}
 }
 
 func (v *videoRepository) CreateVideo()
