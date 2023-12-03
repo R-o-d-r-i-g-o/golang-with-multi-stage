@@ -5,6 +5,7 @@ import (
 	"myTestWithMultiStage/adapter/db/mongo"
 	"myTestWithMultiStage/adapter/db/mysql"
 	"myTestWithMultiStage/env"
+	"time"
 )
 
 func init() {
@@ -18,6 +19,8 @@ func main() {
 	defer func() {
 		fmt.Println("Connection successfully established")
 	}()
+
+	time.Local, _ = time.LoadLocation(env.Var.AppTimestamp)
 
 	mysql.Connect()
 	mongo.Connect()
