@@ -40,5 +40,9 @@ func migrate(db *gorm.DB) {
 	db.AutoMigrate(&entity.User{})
 	db.AutoMigrate(&entity.VideoRegister{})
 
+	if err := loadSeed(db); err != nil {
+		log.Fatal("Couldn't load seed correctly:", err)
+	}
+
 	DB = db
 }
