@@ -5,6 +5,14 @@ import (
 	"testing"
 )
 
+func TestEnvironment_Init(t *testing.T) {
+	entity := Init()
+
+	if entity == nil {
+		t.Errorf("Expected variables enity to has values, but got 'null'")
+	}
+}
+
 func TestEnvironment_Load(t *testing.T) {
 	err := os.Setenv("MYSQL_DATABASE", "testdb")
 	if err != nil {

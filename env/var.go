@@ -32,6 +32,10 @@ type enviroment struct {
 	AppTimestamp    string `env:"APP_TIMESTAMP"`
 }
 
+func Init() *enviroment {
+	return &enviroment{}
+}
+
 func (env *enviroment) Load() {
 	variables.Load("./../.env")
 	parser.Parse(env)
