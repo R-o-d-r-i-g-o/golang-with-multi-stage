@@ -14,7 +14,7 @@ services:
     expose:
       - '${MYSQL_PORT}'
     volumes:
-      - ./mysql-data:/var/lib/mysql
+      - ./volumes/mysql-data:/var/lib/mysql
 
   mongodb:
     image: mongo:latest
@@ -28,4 +28,4 @@ services:
     expose:
       - '${MONGO_PORT}'
     volumes:
-      - ./mongo-data:/data/db
+      - ./volumes/mongo-data:/data/db
