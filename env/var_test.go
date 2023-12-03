@@ -45,6 +45,8 @@ func TestEnvironment_Verify(t *testing.T) {
 				MongoDatabase:   "testmongo",
 				MongoUsername:   "admin",
 				MongoPassword:   "admin_password",
+				MongoHost:       "localhost",
+				MongoPort:       "27017",
 				AppSyncApiPort:  "8080",
 				AppAsyncApiPort: "8081",
 				AppTimestamp:    "2023-12-31T23:59:59Z",
@@ -55,9 +57,7 @@ func TestEnvironment_Verify(t *testing.T) {
 			name: "MissingVariable",
 			env: &enviroment{
 				MySqlDatabase: "testdb",
-				// Missing MySQLUsername intentionally
-				MySqlPassword: "password",
-				MySqlPort:     "3306",
+				// Missing values intentionally
 			},
 			expectedErrMsg: "Couldn't get environment variable for MySqlUsername",
 		},

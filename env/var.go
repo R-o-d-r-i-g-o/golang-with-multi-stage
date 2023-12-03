@@ -25,6 +25,8 @@ type enviroment struct {
 	MongoDatabase string `env:"MONGO_DATABASE"`
 	MongoUsername string `env:"MONGO_USERNAME"`
 	MongoPassword string `env:"MONGO_PASSWORD"`
+	MongoHost     string `env:"MONGO_HOST"`
+	MongoPort     string `env:"MONGO_PORT"`
 
 	// App
 	AppSyncApiPort  string `env:"APP_SYNC_API_PORT"`

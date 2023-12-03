@@ -1,7 +1,24 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"myTestWithMultiStage/adapter/db/mongo"
+	"myTestWithMultiStage/adapter/db/mysql"
+	"myTestWithMultiStage/env"
+)
+
+func init() {
+	environment := env.Init()
+
+	environment.Load()
+	environment.Verify()
+}
 
 func main() {
-	fmt.Println("Hello, World!")
+	defer func() {
+		fmt.Println("Connection successfully established")
+	}()
+
+	mysql.Connect()
+	mongo.Connect()
 }
