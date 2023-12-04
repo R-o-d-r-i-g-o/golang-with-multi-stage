@@ -1,0 +1,26 @@
+basePath: /api
+host: localhost:8081
+info:
+  contact: {}
+  description: Your API description
+  termsOfService: https://example.com/terms/
+  title: Your API Title
+  version: "1.0"
+paths:
+  /test:
+    get:
+      consumes:
+      - application/json
+      description: get string by ID
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+          schema:
+            type: string
+      summary: Get info from a helth route
+schemes:
+- http
+- https
+swagger: "2.0"
