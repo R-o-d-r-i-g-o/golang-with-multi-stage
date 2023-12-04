@@ -22,6 +22,6 @@ func NewRepository(_mysql *gorm.DB, _mongo *mongo.Client) IVideoRepository {
 	}
 }
 
-func (v *videoRepository) CreateVideo()
+func (v *videoRepository) CreateVideo() {}
 
-func (v *videoRepository) GetVideoInfo()
+func (v *videoRepository) GetVideoInfo() {}

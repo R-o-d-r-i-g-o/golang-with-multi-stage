@@ -1,8 +1,8 @@
 package env
 
 import (
-	"errors"
 	"fmt"
+	"log"
 	util "myTestWithMultiStage/utils"
 	"reflect"
 
@@ -10,9 +10,9 @@ import (
 	variables "github.com/joho/godotenv"
 )
 
-var Var *enviroment
+var Var *environment
 
-type enviroment struct {
+type environment struct {
 	// MySql
 	MySqlDatabase string `env:"MYSQL_DATABASE"`
 	MySqlUsername string `env:"MYSQL_USERNAME"`
@@ -29,30 +29,29 @@ type enviroment struct {
 	MongoPort     string `env:"MONGO_PORT"`
 
 	// App
-	AppSyncApiPort  string `env:"APP_SYNC_API_PORT"`
-	AppAsyncApiPort string `env:"APP_ASYNC_API_PORT"`
-	AppTimestamp    string `env:"APP_TIMESTAMP"`
+	AppApiPort   string `env:"APP_API_PORT"`
+	AppTimestamp string `env:"APP_TIMESTAMP"`
 }
 
-func Init() *enviroment {
-	return &enviroment{}
+func New() *environment {
+	return &environment{}
 }
 
-func (env *enviroment) Load() {
-	variables.Load("./../.env")
+func (env *environment) Load() {
+	variables.Load(".env")
 	parser.Parse(env)
+
+	Var = env
 }
 
-func (env *enviroment) Verify() error {
+func (env *environment) Verify() {
 	entity := reflect.ValueOf(env).Elem()
 
 	for index := 0; index < entity.NumField(); index++ {
 		if entity.Field(index).Interface() == util.EMPTY_STING {
 			fieldName := entity.Type().Field(index).Name
 
-			return errors.New(fmt.Sprintf("Couldn't get environment variable for %s", fieldName))
+			log.Fatal(fmt.Sprintf("Couldn't get environment variable for %s", fieldName))
 		}
 	}
-
-	return nil
 }

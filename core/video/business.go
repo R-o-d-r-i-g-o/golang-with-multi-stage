@@ -1,6 +1,8 @@
 package video
 
 type IVideoBusiness interface {
+	CreateVideo()
+	GetVideoInfo()
 }
 
 type videoBusiness struct {
@@ -12,3 +14,7 @@ func NewBusiness(_repository IVideoRepository) IVideoBusiness {
 		repository: _repository,
 	}
 }
+
+func (v *videoBusiness) CreateVideo() {}
+
+func (v *videoBusiness) GetVideoInfo() {}

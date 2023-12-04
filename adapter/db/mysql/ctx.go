@@ -15,7 +15,7 @@ var DB *gorm.DB
 
 func Connect() {
 	databaseStringConfig := fmt.Sprintf(
-		"%s:%s@tcp(%s:%s)/%s%s",
+		"%s:%s@tcp(%s:%s)/%s?%s",
 		env.Var.MySqlUsername,
 		env.Var.MySqlPassword,
 		env.Var.MySqlHost,
@@ -40,9 +40,6 @@ func migrate(db *gorm.DB) {
 	db.AutoMigrate(&entity.User{})
 	db.AutoMigrate(&entity.VideoRegister{})
 
-	if err := loadSeed(db); err != nil {
-		log.Fatal("Couldn't load seed correctly:", err)
-	}
-
+	loadSeed(db)
 	DB = db
 }

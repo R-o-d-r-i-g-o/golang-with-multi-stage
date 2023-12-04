@@ -2,13 +2,11 @@ version: '3.8'
 
 services:
   mysql:
-    image: mysql:latest
-    restart: always
+    image: mysql:5.7
+    container_name: mysql
     environment:
-      MYSQL_ROOT_PASSWORD: '${MYSQL_PASSWORD}'
       MYSQL_DATABASE: '${MYSQL_DATABASE}'
-      MYSQL_PASSWORD: '${MYSQL_PASSWORD}'
-      MYSQL_USER: '${MYSQL_USERNAME}'
+      MYSQL_ROOT_PASSWORD: '${MYSQL_PASSWORD}'
     ports:
       - '${MYSQL_PORT}:${MYSQL_PORT}'
     expose:
@@ -18,7 +16,8 @@ services:
 
   mongodb:
     image: mongo:latest
-    restart: always
+    container_name: mongo
+    # restart: always
     environment:
       MONGO_INITDB_ROOT_USERNAME: '${MONGO_USERNAME}'
       MONGO_INITDB_ROOT_PASSWORD: '${MONGO_PASSWORD}'

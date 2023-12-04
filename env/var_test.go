@@ -5,8 +5,8 @@ import (
 	"testing"
 )
 
-func TestEnvironment_Init(t *testing.T) {
-	entity := Init()
+func TestEnvironment_New(t *testing.T) {
+	entity := New()
 
 	if entity == nil {
 		t.Errorf("Expected variables enity to has values, but got 'null'")
@@ -36,20 +36,19 @@ func TestEnvironment_Verify(t *testing.T) {
 		{
 			name: "AllVariablesSet",
 			env: &enviroment{
-				MySqlDatabase:   "testdb",
-				MySqlUsername:   "root",
-				MySqlPassword:   "password",
-				MySqlPort:       "3306",
-				MySqlHost:       "localhost",
-				MySqlConfig:     "charset=utf8mb4&parseTime=True&loc=Local",
-				MongoDatabase:   "testmongo",
-				MongoUsername:   "admin",
-				MongoPassword:   "admin_password",
-				MongoHost:       "localhost",
-				MongoPort:       "27017",
-				AppSyncApiPort:  "8080",
-				AppAsyncApiPort: "8081",
-				AppTimestamp:    "2023-12-31T23:59:59Z",
+				MySqlDatabase: "testdb",
+				MySqlUsername: "root",
+				MySqlPassword: "password",
+				MySqlPort:     "3306",
+				MySqlHost:     "localhost",
+				MySqlConfig:   "charset=utf8mb4&parseTime=True&loc=Local",
+				MongoDatabase: "testmongo",
+				MongoUsername: "admin",
+				MongoPassword: "admin_password",
+				MongoHost:     "localhost",
+				MongoPort:     "27017",
+				AppApiPort:    "8080",
+				AppTimestamp:  "2023-12-31T23:59:59Z",
 			},
 			expectedErrMsg: "",
 		},
